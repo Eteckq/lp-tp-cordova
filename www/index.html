@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      content="default-src *; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'"
+      http-equiv="Content-Security-Policy"
+    />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="no" name="msapplication-tap-highlight" />
+    <meta
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
+      name="viewport"
+    />
+
+    <title>Tic-Tac-Toe</title>
+    <link
+      href="css/vendor/jquery.mobile-1.4.5.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+    <script src="cordova.js"></script>
+    <script src="js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="js/vendor/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/bundle.js"></script>
+  </head>
+  <body>
+    <div data-role="page" data-theme="a" id="vueChargement">
+      <div class="ui-content" data-role="main">
+        <p>Chargement du jeu...</p>
+      </div>
+    </div>
+
+    <!--======== PAGE "vueAccueil" - saisie nom joueur    ========-->
+    <div data-role="page" data-theme="a" id="vueAccueil">
+      <div class="ui-content" data-role="main">
+        <p>Tic-Tac-Toe</p>
+        <div class="playerInputs">
+          <div>
+            <input id="nomJoueur1" placeholder="Joueur 1" type="text" />
+            <button id="btnPhoto1" data-icon="camera">Photo</button>
+            <img
+              id="imgPhoto1"
+              src=""
+              style="
+                width: 200px;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+              "
+            />
+          </div>
+          <div>
+            <input id="nomJoueur2" placeholder="Joueur 2" type="text" />
+            <button id="btnPhoto2" data-icon="camera">Photo</button>
+            <img
+              id="imgPhoto2"
+              src=""
+              style="
+                width: 200px;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+              "
+            />
+          </div>
+        </div>
+        <button id="btnNewGame" data-icon="carat-r">Jouer</button>
+      </div>
+    </div>
+
+    <!--======== PAGE "vueJeu" - déroulement d'une partie ========-->
+    <div data-role="page" data-theme="a" id="vueJeu">
+      <div class="ui-content ui-mini" data-role="main">
+        <p>
+          <img
+            data-role="photoJoueur"
+            src=""
+            style="width: 60px; vertical-align: middle"
+          />
+          <b><span data-role="nomJoueur1" style="color: blue"></span></b>,
+          choisissez votre coup...
+        </p>
+        <div class="ui-grid-b">
+          <div class="ui-block-a">
+            <button class="mybtn" id="btnGrid0">
+              <img src="images/ciseau.png" />
+            </button>
+          </div>
+          <div class="ui-block-b">
+            <button class="mybtn" id="btnGrid1">
+              <img src="images/feuille.png" />
+            </button>
+          </div>
+          <div class="ui-block-c">
+            <button class="mybtn" id="btnGrid2">
+              <img src="images/pierre.png" />
+            </button>
+          </div>
+        </div>
+        <div class="ui-grid-b">
+          <div class="ui-block-a">
+            <button class="mybtn" id="btnGrid3">
+              <img src="images/ciseau.png" />
+            </button>
+          </div>
+          <div class="ui-block-b">
+            <button class="mybtn" id="btnGrid4">
+              <img src="images/feuille.png" />
+            </button>
+          </div>
+          <div class="ui-block-c">
+            <button class="mybtn" id="btnGrid5">
+              <img src="images/pierre.png" />
+            </button>
+          </div>
+        </div>
+        <div class="ui-grid-b">
+          <div class="ui-block-a">
+            <button class="mybtn" id="btnGrid6">
+              <img src="images/ciseau.png" />
+            </button>
+          </div>
+          <div class="ui-block-b">
+            <button class="mybtn" id="btnGrid7">
+              <img src="images/feuille.png" />
+            </button>
+          </div>
+          <div class="ui-block-c">
+            <button class="mybtn" id="btnGrid8">
+              <img src="images/pierre.png" />
+            </button>
+          </div>
+        </div>
+
+        <div id="resultat">
+          <p>
+            Résultat : <b><span id="texteResultat"></span></b>
+          </p>
+          <button id="btnNouveauCoup" data-icon="refresh">Rejouer</button>
+          <button id="btnFinPartie" data-icon="carat-r">Score</button>
+        </div>
+      </div>
+    </div>
+
+    <!--======== PAGE "vueScore" - affichage des scores   ========-->
+    <div data-role="page" data-theme="a" id="vueFin">
+      <div class="ui-content" data-role="main">
+        <div style="text-align: center">
+          <img data-role="photoJoueur" src="" style="width: 200px;
+          margin-left:auto; margin-right:auto; display: block;"" />
+          <h1><span data-role="nomJoueur" style="color: blue"></span></h1>
+          <p>
+            <span style="color: green"
+              >Victoires : <span id="nbVictoires"></span
+            ></span>
+            /
+            <span style="color: orange">Nuls : <span id="nbNuls"></span></span>
+            /
+            <span style="color: red"
+              >Défaites : <span id="nbDefaites"></span
+            ></span>
+          </p>
+        </div>
+        <button id="btnRetourJeu" data-icon="carat-l">Continuer</button>
+        <button id="btnSupprimer" data-icon="delete">Supprimer</button>
+        <button id="btnRetourAccueil" data-icon="home">Nouveau Joueur</button>
+      </div>
+    </div>
+  </body>
+</html>
