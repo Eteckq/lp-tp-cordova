@@ -45,7 +45,6 @@ export default class View {
   }
 
   getPlayernameInput(index) {
-    console.log($(`#nomJoueur${index}`));
     return $(`#nomJoueur${index}`).val();
   }
 
@@ -99,12 +98,14 @@ export default class View {
             ></span>
           </p>
         </div>
-        <button id="btnSupprimer" data-icon="delete">Supprimer</button>
-      
       `);
     }
     $("#vueFin").append(`
     <button id="btnRetourJeu" data-icon="carat-l">Continuer</button>
     </div>`);
+
+    $("#btnRetourJeu").click(() => {
+      $.mobile.changePage("#vueJeu");
+    });
   }
 }

@@ -28,15 +28,7 @@ export class TicTacToe {
   constructor(player1, player2) {
     this.player1 = player1;
     this.player2 = player2;
-    let players = PlayersDao.getAllPlayers();
-    let p1f = PlayersUtils.findPlayerByNameInArray(players, this.player1.name);
-    if (p1f) {
-      this.player1 = p1f;
-    }
-    let p2f = PlayersUtils.findPlayerByNameInArray(players, this.player2.name);
-    if (p2f) {
-      this.player2 = p2f;
-    }
+
     this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.currentPlayer = Math.random() < 0.5 ? player1 : player2; // Le premier joueur est choisi aléatoirement
   }

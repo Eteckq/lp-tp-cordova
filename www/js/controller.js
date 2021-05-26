@@ -1,4 +1,10 @@
-import { TicTacToe, PlayersDao, Player, CordovaAPI } from "./model.js";
+import {
+  TicTacToe,
+  PlayersDao,
+  PlayersUtils,
+  Player,
+  CordovaAPI,
+} from "./model.js";
 import View from "./view.js";
 
 export default class Controller {
@@ -41,6 +47,7 @@ export default class Controller {
   onClickReplay() {
     this.game = new TicTacToe(this.p1, this.p2);
     this.view.resetGrid();
+    this.view.setResultat("");
   }
 
   onClickTakePicture(playerIndex) {
@@ -65,6 +72,18 @@ export default class Controller {
     this.p2.name = this.view.getPlayernameInput(2);
     this.view.setPlayername(2, this.p2.name);
 
+    let players = PlayersDao.getAllPlayers();
+    let p1f = PlayersUtils.findPlayerByNameInArray(players, this.p1.name);
+    if (p1f) {
+      this.p1 = p1f;
+      this.p1.id = 1;
+    }
+    let p2f = PlayersUtils.findPlayerByNameInArray(players, this.p2.name);
+    if (p2f) {
+      this.p2 = p2f;
+      this.p2.id = 2;
+    }
+
     this.game = new TicTacToe(this.p1, this.p2);
 
     this.view.setCurrentPlayer(this.game.currentPlayer.name);
@@ -75,10 +94,11 @@ export default class Controller {
     if (this.game.over) {
       return;
     }
+
     this.game.play(index);
-    this.game.switchCurrentPlayer();
     this.view.setCurrentPlayer(this.game.currentPlayer.name);
     this.view.setImgOnBtn(index, this.game.currentPlayer.picture);
+
     if (this.game.isWin()) {
       this.view.setResultat("Win");
       this.end();
@@ -89,6 +109,7 @@ export default class Controller {
       this.end();
       return;
     }
+    this.game.switchCurrentPlayer();  
   }
 
   end() {
