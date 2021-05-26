@@ -2,9 +2,15 @@
   opacity: 1;
 }
 
+.mybtn {
+  height: 150px;
+}
+
 .myimg {
   display: block;
   margin: auto;
+  height: 100px;
+  width: 100px;
 }
 
 .playerInputs {

@@ -24,17 +24,27 @@ export class Player {
 
 // Classe pour représenter une partie de TicTacToe
 export class TicTacToe {
+  over = false;
   constructor(player1, player2) {
     this.player1 = player1;
     this.player2 = player2;
+    let players = PlayersDao.getAllPlayers();
+    let p1f = PlayersUtils.findPlayerByNameInArray(players, this.player1.name);
+    if (p1f) {
+      this.player1 = p1f;
+    }
+    let p2f = PlayersUtils.findPlayerByNameInArray(players, this.player2.name);
+    if (p2f) {
+      this.player2 = p2f;
+    }
     this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.currentPlayer = Math.random() < 0.5 ? player1 : player2; // Le premier joueur est choisi aléatoirement
   }
 
   // Changer de joueur courant
   switchCurrentPlayer() {
-    if (this.currentPlayer === this.player1) this.currentPlayer = this.player2;
-    else this.currentPlayer = this.player1;
+    this.currentPlayer =
+      this.player1 == this.currentPlayer ? this.player2 : this.player1;
   }
 
   // Le joueur courant joue en caseId
@@ -60,6 +70,21 @@ export class TicTacToe {
   // Renvoie vrai s'il y a match nul (aucune case)
   isDrawn() {
     return this.board.find((element) => element === 0) === undefined;
+  }
+
+  save() {
+    if (this.isWin()) {
+      this.currentPlayer.nbWin++;
+      this.switchCurrentPlayer();
+      this.currentPlayer.nbLoss++;
+    } else if (this.isDrawn()) {
+      this.currentPlayer.nbDrawn++;
+    }
+    let players = PlayersDao.getAllPlayers();
+    PlayersUtils.addOrUpdatePlayerInArray(players, this.player1);
+    PlayersUtils.addOrUpdatePlayerInArray(players, this.player2);
+
+    PlayersDao.savePlayers(players);
   }
 }
 

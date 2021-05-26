@@ -73,63 +73,40 @@
     <div data-role="page" data-theme="a" id="vueJeu">
       <div class="ui-content ui-mini" data-role="main">
         <p>
-          <img
-            data-role="photoJoueur"
-            src=""
-            style="width: 60px; vertical-align: middle"
-          />
-          <b><span data-role="nomJoueur1" style="color: blue"></span></b>,
+          <b><span data-role="currentPlayer" style="color: blue"></span></b>,
           choisissez votre coup...
         </p>
         <div class="ui-grid-b">
           <div class="ui-block-a">
-            <button class="mybtn" id="btnGrid0">
-              <img src="images/ciseau.png" />
-            </button>
+            <button class="mybtn" id="btnGrid0"></button>
           </div>
           <div class="ui-block-b">
-            <button class="mybtn" id="btnGrid1">
-              <img src="images/feuille.png" />
-            </button>
+            <button class="mybtn" id="btnGrid1"></button>
           </div>
           <div class="ui-block-c">
-            <button class="mybtn" id="btnGrid2">
-              <img src="images/pierre.png" />
-            </button>
+            <button class="mybtn" id="btnGrid2"></button>
           </div>
         </div>
         <div class="ui-grid-b">
           <div class="ui-block-a">
-            <button class="mybtn" id="btnGrid3">
-              <img src="images/ciseau.png" />
-            </button>
+            <button class="mybtn" id="btnGrid3"></button>
           </div>
           <div class="ui-block-b">
-            <button class="mybtn" id="btnGrid4">
-              <img src="images/feuille.png" />
-            </button>
+            <button class="mybtn" id="btnGrid4"></button>
           </div>
           <div class="ui-block-c">
-            <button class="mybtn" id="btnGrid5">
-              <img src="images/pierre.png" />
-            </button>
+            <button class="mybtn" id="btnGrid5"></button>
           </div>
         </div>
         <div class="ui-grid-b">
           <div class="ui-block-a">
-            <button class="mybtn" id="btnGrid6">
-              <img src="images/ciseau.png" />
-            </button>
+            <button class="mybtn" id="btnGrid6"></button>
           </div>
           <div class="ui-block-b">
-            <button class="mybtn" id="btnGrid7">
-              <img src="images/feuille.png" />
-            </button>
+            <button class="mybtn" id="btnGrid7"></button>
           </div>
           <div class="ui-block-c">
-            <button class="mybtn" id="btnGrid8">
-              <img src="images/pierre.png" />
-            </button>
+            <button class="mybtn" id="btnGrid8"></button>
           </div>
         </div>
 
@@ -144,28 +121,6 @@
     </div>
 
     <!--======== PAGE "vueScore" - affichage des scores   ========-->
-    <div data-role="page" data-theme="a" id="vueFin">
-      <div class="ui-content" data-role="main">
-        <div style="text-align: center">
-          <img data-role="photoJoueur" src="" style="width: 200px;
-          margin-left:auto; margin-right:auto; display: block;"" />
-          <h1><span data-role="nomJoueur" style="color: blue"></span></h1>
-          <p>
-            <span style="color: green"
-              >Victoires : <span id="nbVictoires"></span
-            ></span>
-            /
-            <span style="color: orange">Nuls : <span id="nbNuls"></span></span>
-            /
-            <span style="color: red"
-              >Défaites : <span id="nbDefaites"></span
-            ></span>
-          </p>
-        </div>
-        <button id="btnRetourJeu" data-icon="carat-l">Continuer</button>
-        <button id="btnSupprimer" data-icon="delete">Supprimer</button>
-        <button id="btnRetourAccueil" data-icon="home">Nouveau Joueur</button>
-      </div>
-    </div>
+    <div data-role="page" data-theme="a" id="vueFin"></div>
   </body>
 </html>
